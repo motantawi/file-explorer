@@ -11,28 +11,6 @@
       "destination": "/api/$1"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/files/([^/]+)",
-      "dest": "/api/files/[id]"
-    },
-    {
-      "src": "/api/folders/([^/]+)",
-      "dest": "/api/folders/[id]"
-    },
-    {
-      "src": "/folder/([^/]+)",
-      "dest": "/folder/[id]"
-    },
-    {
-      "src": "/recent",
-      "dest": "/recent"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "functions": {
     "app/api/files/[id]/route.ts": {
       "maxDuration": 30
