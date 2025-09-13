@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/files/([^/]+)",
+      "dest": "/api/files/[id]"
+    },
+    {
+      "src": "/api/folders/([^/]+)",
+      "dest": "/api/folders/[id]"
+    },
+    {
+      "src": "/folder/([^/]+)",
+      "dest": "/folder/[id]"
+    },
+    {
+      "src": "/recent",
+      "dest": "/recent"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "functions": {
+    "app/api/files/[id]/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/folders/[id]/route.ts": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
+}
